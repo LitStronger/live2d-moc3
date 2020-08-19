@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Azur Lane Live2D Viewer</title>
+
+    <style>
+        .btnGenericText {
+            white-space: nowrap;
+            height: 30px;
+            text-align: center;
+            vertical-align: middle;
+            display: table-cell;
+            background-color: #24252d;
+            border-style: solid;
+            border-color: #5c5d70;
+            border-width: 1px;
+            cursor: pointer;
+            padding: 0px 7px 0px 7px;
+            font-size: 14px;
+            color: white;
+            margin-bottom: 5px;
+            margin-left: 5px;
+        }
+        .btnGenericText:hover {
+            box-shadow: 0px 0px 10px white;
+        }
+        .btnGenericText:active {
+            box-shadow: 1px 1px 4px white, -1px 1px 4px white, 1px -1px 4px white, -1px -1px 4px white;
+        }
+        .darken {
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            left: 0px;
+        }
+        .selector {
+            width: 80%;
+            height: 90%;
+            position: absolute;
+            left: 10%;
+            background-color: #5c5d70;
+            overflow-y: auto;
+            padding: 10px;
+            border-radius: 3px;
+        }
+        .thumbbutton {
+            cursor: pointer;
+            height: 101px;
+            width: 180px;
+            display: inline-block;
+            margin-top: 20px;
+            margin-left: 20px;
+            border-radius: 3px;
+        }
+        #footer {
+            position: absolute;
+            height: auto;
+            width: 100%;
+            overflow: hidden;
+            left: 0;
+            background-color: #24252d;
+            color: white;
+            text-align: left;
+            padding:10px 20px 10px 20px;
+            font-size:10px;
+        }
+        table.wikitable {
+            margin: 1em 0;
+            background-color: #373743;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #5c5d70;
+            border-collapse: collapse;
+            color: #ffffff;
+            height: 100%;
+            width: 100%;
+        }
+        table.wikitable td {
+            border-style: solid;
+            border-width: 1px;
+            border-color: #5c5d70;
+            border-collapse: collapse;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body style="background-color: #494a5a; color: white;">
+    <a href='https://ko-fi.com/K3K71DGPS' target='_blank'><img height='36' style='border:0px;height:36px; position: absolute; top: 1%; right: 1%' src='https://az743702.vo.msecnd.net/cdn/kofi2.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+    <button type="button" class="btn btn-secondary" style="position: absolute; top: 1%; left: 1%" onclick="onChangeLog()">Changelog</button>
+    <div align="center">
+                <h1>Azur Lane Live2D Viewer</h1>
+            </div>
+    <div align="center">
+        <div class="form-group" style="display: inline-block;">
+            <label><b>Character</b></label>
+            <select class="selectCharacter form-control" style="background-color: #24252d; color: #ffffff;"></select>
+        </div>
+    </div>
+
+    <div align="center" style="margin-bottom: 15px;">
+        <div class="btnGenericText" onclick="onSelectBG()" style="font-size: 17px; height: 40px;"><b>Change Background</b></div>
+    </div>
+
+    <div align="center" style="margin-bottom: 15px;">
+        <div class="selectAnimation btn-group" role="group" aria-label="Animation" style="display: inline-block; width: 90%;">
+        </div>
+    </div>
+    
+    <!-- Canvas -->
+    <div align="center">
+        <div class="Canvas" style="display: inline-block; background-image: url(../assets/bg/zgreen.png); background-size: 100%; background-repeat: no-repeat;" id="L2dCanvas"></div>
+    </div>
+
+    <footer id="false" style="height:70px;width:100%;margin-top: 20px;">
+    </footer>
+
+    <footer id="footer">
+        Azur Lane © is owned by Shanghai Manjuu, Xiamen Yongshi, Shanghai Yostar | All logos and trademarks are property of their respective owners.<br>
+        /alg/ wiki © 2019. This is a non-profit website. 
+        For concerns and feedback, send a mail to alg.4chan@gmail.com
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Promise-polyfill -->
+    <script src = "https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js "> </script>
+    
+    <!-- Live2DCubismCore -->
+    <script src="https://s3-ap-northeast-1.amazonaws.com/cubism3.live2d.com/sdk/js_eap/live2dcubismcore.min.js"></script>
+
+    <!-- Include Pixi. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.6.1/pixi.min.js"></script>
+
+    <!-- Include Cubism Components. -->
+    <script src="js/live2dcubismframework.js"></script>
+    <script src="js/live2dcubismpixi.js"></script>
+
+    <!-- User's Script -->
+    <script src = "js/backgroundData.js"></script>
+    <script src = "js/charData.js"></script>
+    <script src = "js/l2d.js"></script>
+    <script src = "js/main.js"></script>
+</body>
+</html>
