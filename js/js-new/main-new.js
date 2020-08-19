@@ -1,10 +1,4 @@
-$(document).ready(() => {
-    var v = new Viewer('assets');
-    var screen_height = Math.max( document.body.scrollHeight, document.body.offsetHeight, 
-                               document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );   
-    console.log("ready")
-                               // $("#footer").css("top",screen_height - $("#footer").height() - 20);
-});
+
 
 class Viewer {
     constructor (basePath) {
@@ -25,14 +19,16 @@ class Viewer {
         //         return;
         //     }
         //     let name = event.target.value;
-            let name = "bisimai_2"
+            let name = "biaoqiang_3"
             this.l2d.load(name, this);      
              
         // });
 
-        var wt = window.innerWidth * 0.9;
-        var ht = (wt / 16.0) * 9.0;
-
+        // var wt = window.innerWidth * 0.4;
+        // var ht = (wt / 5) * 3;
+        var wt = 600
+        var ht = 400
+        console.log("wt ht",wt,ht)
         this.app = new PIXI.Application(wt, ht, { transparent: true });
         this.canvas.html(this.app.view);
 
@@ -44,18 +40,13 @@ class Viewer {
             this.model.update(deltaTime);
             this.model.masks.update(this.app.renderer);
         });
-        window.onclick = (event) => {                  // 事件会在窗口或框架被调整大小时发生
-            console.log("click")
-            let width = window.innerWidth * 0.9;
-            let height = (width / 16.0) * 9.0;
-            this.app.view.style.width = width + "px";
-            this.app.view.style.height = height + "px";
-            this.app.renderer.resize(width, height);
-        }
-        window.onresize = (event) => {                  // 事件会在窗口或框架被调整大小时发生
+
+        window.onresize = (event) => {                  // 
             if (event === void 0) { event = null; }
-            let width = window.innerWidth * 0.9;
-            let height = (width / 16.0) * 9.0;
+            // let width = window.innerWidth * 0.4;
+            // let height = (width / 5) * 3;
+            let width = 600
+            let height = 400
             this.app.view.style.width = width + "px";
             this.app.view.style.height = height + "px";
             this.app.renderer.resize(width, height);

@@ -26,12 +26,25 @@
     <script src = "js/charData.js"></script>
     <script src = "js/l2d.js"></script>
     <script src = "js/js-new/main-new.js"></script>
+
+    <style>
+        .wrap{
+            position: fixed;
+            left: 0px; 
+            bottom: 0px;
+            background-size: 100%; 
+            background: pink;
+        }
+    </style>
 </head>
 <body>
         <!-- Canvas -->
-        <div style="text-align:center">
-            <div class="Canvas" style="display: inline-block; background-image: url(../assets/bg/zgreen.png); background-size: 100%; background-repeat: no-repeat;" id="L2dCanvas"></div>
+        <div class="wrap">
+            <div class="Canvas"  id="L2dCanvas"></div>
         </div>
-    <!-- <div class="Canvas" id="l2dCanvas"></div> -->
+        <script>
+                var v = new Viewer('./assets');
+                console.log("ready init")
+        </script>
 </body>
 </html>
