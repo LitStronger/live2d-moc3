@@ -19,7 +19,7 @@ class Viewer {
         //         return;
         //     }
         //     let name = event.target.value;
-            let name = "biaoqiang_3"
+            let name = "bisimai_2"
             this.l2d.load(name, this);      
              
         // });
@@ -51,19 +51,13 @@ class Viewer {
             this.app.view.style.height = height + "px";
             this.app.renderer.resize(width, height);
 
-            // if (document.getElementById("darken") != null) {
-            //     document.getElementById("darken").top = window.pageYOffset + "px";
-            //     document.getElementById("selector").top = (window.pageYOffset + (window.innerHeight * 0.05)) + "px" ;
-            // }
 
             if (this.model) {
                 this.model.position = new PIXI.Point((width * 0.5), (height * 0.5));
                 this.model.scale = new PIXI.Point((this.model.position.x * 0.06), (this.model.position.x * 0.06));
                 this.model.masks.resize(this.app.view.width, this.app.view.height);
             }
-            // var screen_height = Math.max( document.body.scrollHeight, document.body.offsetHeight, 
-            //                    document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );   
-            // $("#footer").css("top",screen_height - $("#footer").height() - 20);
+
         };
         this.isClick = false;
         this.app.view.addEventListener('mousedown', (event) => {
@@ -189,13 +183,16 @@ class Viewer {
         if (!this.model) {
             return;
         }
-
+        // console.log("start Animation:", motionId, layerId)
         let m = this.model.motions.get(motionId);
+        console.log("motionId:", m)
+        
         if (!m) {
             return;
         }
 
         let l = this.model.animator.getLayer(layerId);
+        console.log("layerId:", l)
         if (!l) {
             return;
         }
