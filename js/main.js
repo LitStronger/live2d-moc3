@@ -23,6 +23,7 @@ class Viewer {
                 return;
             }
             let name = event.target.value;
+            console.log("name:",name)
             this.l2d.load(name, this);
         });
 

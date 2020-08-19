@@ -11,7 +11,7 @@ class Viewer {
         this.l2d = new L2D(basePath);
         this.canvas = $(".Canvas");
         // this.selectCharacter = $(".selectCharacter");
-        this.selectCharacter = "bisimai"
+        this.selectCharacter = "bisimai_2"
         // this.selectAnimation = $(".selectAnimation");
         this.selectAnimation = "mail"
 
@@ -25,7 +25,9 @@ class Viewer {
         //         return;
         //     }
         //     let name = event.target.value;
-            this.l2d.load(name, this);
+            let name = "bisimai_2"
+            this.l2d.load(name, this);      
+             
         // });
 
         var wt = window.innerWidth * 0.9;
@@ -42,28 +44,36 @@ class Viewer {
             this.model.update(deltaTime);
             this.model.masks.update(this.app.renderer);
         });
-        // window.onresize = (event) => {                  // 事件会在窗口或框架被调整大小时发生
-        //     if (event === void 0) { event = null; }
-        //     let width = window.innerWidth * 0.9;
-        //     let height = (width / 16.0) * 9.0;
-        //     this.app.view.style.width = width + "px";
-        //     this.app.view.style.height = height + "px";
-        //     this.app.renderer.resize(width, height);
+        window.onclick = (event) => {                  // 事件会在窗口或框架被调整大小时发生
+            console.log("click")
+            let width = window.innerWidth * 0.9;
+            let height = (width / 16.0) * 9.0;
+            this.app.view.style.width = width + "px";
+            this.app.view.style.height = height + "px";
+            this.app.renderer.resize(width, height);
+        }
+        window.onresize = (event) => {                  // 事件会在窗口或框架被调整大小时发生
+            if (event === void 0) { event = null; }
+            let width = window.innerWidth * 0.9;
+            let height = (width / 16.0) * 9.0;
+            this.app.view.style.width = width + "px";
+            this.app.view.style.height = height + "px";
+            this.app.renderer.resize(width, height);
 
-        //     if (document.getElementById("darken") != null) {
-        //         document.getElementById("darken").top = window.pageYOffset + "px";
-        //         document.getElementById("selector").top = (window.pageYOffset + (window.innerHeight * 0.05)) + "px" ;
-        //     }
+            // if (document.getElementById("darken") != null) {
+            //     document.getElementById("darken").top = window.pageYOffset + "px";
+            //     document.getElementById("selector").top = (window.pageYOffset + (window.innerHeight * 0.05)) + "px" ;
+            // }
 
-        //     if (this.model) {
-        //         this.model.position = new PIXI.Point((width * 0.5), (height * 0.5));
-        //         this.model.scale = new PIXI.Point((this.model.position.x * 0.06), (this.model.position.x * 0.06));
-        //         this.model.masks.resize(this.app.view.width, this.app.view.height);
-        //     }
-        //     var screen_height = Math.max( document.body.scrollHeight, document.body.offsetHeight, 
-        //                        document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );   
-        //     $("#footer").css("top",screen_height - $("#footer").height() - 20);
-        // };
+            if (this.model) {
+                this.model.position = new PIXI.Point((width * 0.5), (height * 0.5));
+                this.model.scale = new PIXI.Point((this.model.position.x * 0.06), (this.model.position.x * 0.06));
+                this.model.masks.resize(this.app.view.width, this.app.view.height);
+            }
+            // var screen_height = Math.max( document.body.scrollHeight, document.body.offsetHeight, 
+            //                    document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );   
+            // $("#footer").css("top",screen_height - $("#footer").height() - 20);
+        };
         this.isClick = false;
         this.app.view.addEventListener('mousedown', (event) => {
             this.isClick = true;
@@ -105,84 +115,84 @@ class Viewer {
         });
     }
 
-    // changeCanvas (model) {
-    //     this.app.stage.removeChildren();
+    changeCanvas (model) {
+        this.app.stage.removeChildren();
 
-    //     this.selectAnimation.empty();
-    //     model.motions.forEach((value, key) => {
-    //         if (key != "effect") {
-    //             let btn = document.createElement("button");
-    //             let label = document.createTextNode(key);
-    //             btn.appendChild(label);
-    //             btn.className = "btnGenericText";
-    //             btn.addEventListener("click", () => {
-    //                 this.startAnimation(key, "base");
-    //             });
-    //             this.selectAnimation.append(btn);
-    //         }
-    //     });
+        // this.selectAnimation.empty();
+        model.motions.forEach((value, key) => {
+            if (key != "effect") {
+                let btn = document.createElement("button");
+                let label = document.createTextNode(key);
+                btn.appendChild(label);
+                btn.className = "btnGenericText";
+                btn.addEventListener("click", () => {
+                    this.startAnimation(key, "base");
+                });
+                // this.selectAnimation.append(btn);
+            }
+        });
 
-    //     this.model = model;
-    //     this.model.update = this.onUpdate; // HACK: use hacked update fn for drag support
-    //     // console.log(this.model);
-    //     this.model.animator.addLayer("base", LIVE2DCUBISMFRAMEWORK.BuiltinAnimationBlenders.OVERRIDE, 1);
+        this.model = model;
+        this.model.update = this.onUpdate; // HACK: use hacked update fn for drag support
+        // console.log(this.model);
+        this.model.animator.addLayer("base", LIVE2DCUBISMFRAMEWORK.BuiltinAnimationBlenders.OVERRIDE, 1);
 
-    //     this.app.stage.addChild(this.model);
-    //     this.app.stage.addChild(this.model.masks);
+        this.app.stage.addChild(this.model);
+        this.app.stage.addChild(this.model.masks);
 
-    //     window.onresize();
-    // }
+        window.onresize();
+    }
 
-    // onUpdate (delta) {
-    //     let deltaTime = 0.016 * delta;
+    onUpdate (delta) {
+        let deltaTime = 0.016 * delta;
 
-    //     if (!this.animator.isPlaying) {
-    //         let m = this.motions.get("idle");
-    //         this.animator.getLayer("base").play(m);
-    //     }
-    //     this._animator.updateAndEvaluate(deltaTime);
+        if (!this.animator.isPlaying) {
+            let m = this.motions.get("idle");
+            this.animator.getLayer("base").play(m);
+        }
+        this._animator.updateAndEvaluate(deltaTime);
 
-    //     if (this.inDrag) {
-    //         this.addParameterValueById("ParamAngleX", this.pointerX * 30);
-    //         this.addParameterValueById("ParamAngleY", -this.pointerY * 30);
-    //         this.addParameterValueById("ParamBodyAngleX", this.pointerX * 10);
-    //         this.addParameterValueById("ParamBodyAngleY", -this.pointerY * 10);
-    //         this.addParameterValueById("ParamEyeBallX", this.pointerX);
-    //         this.addParameterValueById("ParamEyeBallY", -this.pointerY);
-    //     }
+        if (this.inDrag) {
+            this.addParameterValueById("ParamAngleX", this.pointerX * 30);
+            this.addParameterValueById("ParamAngleY", -this.pointerY * 30);
+            this.addParameterValueById("ParamBodyAngleX", this.pointerX * 10);
+            this.addParameterValueById("ParamBodyAngleY", -this.pointerY * 10);
+            this.addParameterValueById("ParamEyeBallX", this.pointerX);
+            this.addParameterValueById("ParamEyeBallY", -this.pointerY);
+        }
 
-    //     if (this._physicsRig) {
-    //         this._physicsRig.updateAndEvaluate(deltaTime);
-    //     }
+        if (this._physicsRig) {
+            this._physicsRig.updateAndEvaluate(deltaTime);
+        }
 
-    //     this._coreModel.update();
+        this._coreModel.update();
 
-    //     let sort = false;
-    //     for (let m = 0; m < this._meshes.length; ++m) {
-    //         this._meshes[m].alpha = this._coreModel.drawables.opacities[m];
-    //         this._meshes[m].visible = Live2DCubismCore.Utils.hasIsVisibleBit(this._coreModel.drawables.dynamicFlags[m]);
-    //         if (Live2DCubismCore.Utils.hasVertexPositionsDidChangeBit(this._coreModel.drawables.dynamicFlags[m])) {
-    //             this._meshes[m].vertices = this._coreModel.drawables.vertexPositions[m];
-    //             this._meshes[m].dirtyVertex = true;
-    //         }
-    //         if (Live2DCubismCore.Utils.hasRenderOrderDidChangeBit(this._coreModel.drawables.dynamicFlags[m])) {
-    //             sort = true;
-    //         }
-    //     }
+        let sort = false;
+        for (let m = 0; m < this._meshes.length; ++m) {
+            this._meshes[m].alpha = this._coreModel.drawables.opacities[m];
+            this._meshes[m].visible = Live2DCubismCore.Utils.hasIsVisibleBit(this._coreModel.drawables.dynamicFlags[m]);
+            if (Live2DCubismCore.Utils.hasVertexPositionsDidChangeBit(this._coreModel.drawables.dynamicFlags[m])) {
+                this._meshes[m].vertices = this._coreModel.drawables.vertexPositions[m];
+                this._meshes[m].dirtyVertex = true;
+            }
+            if (Live2DCubismCore.Utils.hasRenderOrderDidChangeBit(this._coreModel.drawables.dynamicFlags[m])) {
+                sort = true;
+            }
+        }
 
-    //     if (sort) {
-    //         this.children.sort((a, b) => {
-    //             let aIndex = this._meshes.indexOf(a);
-    //             let bIndex = this._meshes.indexOf(b);
-    //             let aRenderOrder = this._coreModel.drawables.renderOrders[aIndex];
-    //             let bRenderOrder = this._coreModel.drawables.renderOrders[bIndex];
+        if (sort) {
+            this.children.sort((a, b) => {
+                let aIndex = this._meshes.indexOf(a);
+                let bIndex = this._meshes.indexOf(b);
+                let aRenderOrder = this._coreModel.drawables.renderOrders[aIndex];
+                let bRenderOrder = this._coreModel.drawables.renderOrders[bIndex];
 
-    //             return aRenderOrder - bRenderOrder;
-    //         });
-    //     }
+                return aRenderOrder - bRenderOrder;
+            });
+        }
 
-    //     this._coreModel.drawables.resetDynamicFlags();
-    // }
+        this._coreModel.drawables.resetDynamicFlags();
+    }
 
     startAnimation (motionId, layerId) {
         if (!this.model) {
