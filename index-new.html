@@ -30,10 +30,10 @@
     <style>
         .wrap{
             position: fixed;
-            left: 0px; 
+            /* left: 0px; 
             bottom: 0px;
             background-size: 100%; 
-            background: pink;
+            background: pink; */
         }
     </style>
 </head>
@@ -43,8 +43,16 @@
             <div class="Canvas wrap"  id="L2dCanvas"></div>
         <!-- </div> -->
         <script>
-                var v = new Viewer('assets');
-                console.log("ready init")
+            var config = {
+                width: 800,
+                height: 600,
+                basePath: 'https://cdn.jsdelivr.net/gh/alg-wiki/AzurLaneL2DViewer@gh-pages/assets',
+                role: 'bisimai_2'
+            }
+                // var v = new Viewer('assets');
+            var v = new Viewer(config);
+
+            console.log("ready init")
         </script>
 </body>
 </html>

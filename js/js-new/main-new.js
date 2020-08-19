@@ -1,35 +1,23 @@
 
 
 class Viewer {
-    constructor (basePath) {
-        this.l2d = new L2D(basePath);
+    constructor (config) {
+        let width = config.width
+        let height = config.height
+        let role = config.role
+
+        // this.l2d = new L2D(basePath);
+        this.l2d = new L2D(config.basePath);
         this.canvas = $(".Canvas");
-        // this.selectCharacter = $(".selectCharacter");
-        this.selectCharacter = "bisimai_2"
-        // this.selectAnimation = $(".selectAnimation");
-        this.selectAnimation = "mail"
+        this.l2d.load(role, this);      
 
-        // let stringCharacter = "<option>Select</option>";
-        // for (let val in charData) {
-        //     stringCharacter+= '<option value="' + charData[val] + '">' + val + '</option>';
-        // }
-        // this.selectCharacter.html(stringCharacter);
-        // this.selectCharacter.change((event) => {
-        //     if (event.target.selectedIndex == 0) {
-        //         return;
-        //     }
-        //     let name = event.target.value;
-            let name = "bisimai_2"
-            this.l2d.load(name, this);      
-             
-        // });
 
-        // var wt = window.innerWidth * 0.4;
-        // var ht = (wt / 5) * 3;
-        var wt = 600
-        var ht = 400
-        console.log("wt ht",wt,ht)
-        this.app = new PIXI.Application(wt, ht, { transparent: true });
+        this.app = new PIXI.Application({
+            width: width,
+            height: height, 
+            transparent: true, 
+            // antialias: true // 抗锯齿
+        });
         this.canvas.html(this.app.view);
 
         this.app.ticker.add((deltaTime) => {
@@ -41,21 +29,21 @@ class Viewer {
             this.model.masks.update(this.app.renderer);
         });
 
-        window.onresize = (event) => {                  // 
+        window.onresize = (event) => {                 
             if (event === void 0) { event = null; }
-            // let width = window.innerWidth * 0.4;
-            // let height = (width / 5) * 3;
-            let width = 600
-            let height = 400
+
             this.app.view.style.width = width + "px";
             this.app.view.style.height = height + "px";
             this.app.renderer.resize(width, height);
 
 
             if (this.model) {
+                console.log("point")
                 this.model.position = new PIXI.Point((width * 0.5), (height * 0.5));
                 this.model.scale = new PIXI.Point((this.model.position.x * 0.06), (this.model.position.x * 0.06));
                 this.model.masks.resize(this.app.view.width, this.app.view.height);
+                console.log(this.model.position)
+                console.log(this.model.scale)
             }
 
         };
