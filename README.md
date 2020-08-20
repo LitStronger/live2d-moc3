@@ -3,7 +3,10 @@
 
 #### 8.20 已经能用了
 
+**Demo**: 
 
+- 网页全屏示例：[litstronger.github.io/live2d-moc3/](https://litstronger.github.io/live2d-moc3/)
+- 博客看板示例：
 
 ### 可选参数
 
@@ -19,7 +22,7 @@
 
 ### 示例
 
-复制这段代码到空的html文件中，在浏览器打开即可
+复制这段代码保存到空的html文件中，在浏览器打开即可
 
 ```html
 <!DOCTYPE html>
