@@ -6,7 +6,7 @@
 **Demo**: 
 
 - 网页全屏示例：[litstronger.github.io/live2d-moc3/](https://litstronger.github.io/live2d-moc3/)
-- 博客看板示例：
+- 博客看板示例：<https://litstronger.github.io/about/>
 
 ### 可选参数
 
