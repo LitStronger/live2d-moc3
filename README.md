@@ -16,9 +16,11 @@
 | height                | 可选 | 600     | 长度，单位为px                                               |
 | top,right,bottom,left | 可选 | 0       | 模型到浏览器各边框的距离。选择两个即可定位，如定位在左下角：left: '0px' , bottom: '0px' |
 | basePath              | 必须 | ""      | live2d模型资源库的路径                                       |
-| role                  | 必须 | ""      | 模型角色对应的文件夹                                         |
+| role                  | 必须 | ""      | 角色模型对应的文件夹（即basePath下的文件夹                   |
 | background            | 可选 | ""      | 背景图片，可填入图片外链                                     |
 | opacity               | 可选 | 1       | 模型透明度，0~1取值                                          |
+
+Tip:下面示例中的basePath为[原项目](https://github.com/alg-wiki/AzurLaneL2DViewer)经jsdeliver的cdn加速后的模型资源路径，该basePath下可用的角色模型可到[原项目AzurLaneL2DViewer](<https://github.com/alg-wiki/AzurLaneL2DViewer/tree/gh-pages/assets>)查看。当然，你也可以从其他地方引入模型角色，只需指定相应的basePath和role
 
 ### 示例
 
