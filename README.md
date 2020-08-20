@@ -20,7 +20,13 @@
 | background            | 可选 | ""      | 背景图片，可填入图片外链                                     |
 | opacity               | 可选 | 1       | 模型透明度，0~1取值                                          |
 
-Tip:下面示例中的basePath为[原项目](https://github.com/alg-wiki/AzurLaneL2DViewer)经jsdeliver的cdn加速后的模型资源路径，该basePath下可用的角色模型可到[原项目AzurLaneL2DViewer](<https://github.com/alg-wiki/AzurLaneL2DViewer/tree/gh-pages/assets>)查看。当然，你也可以从其他地方引入模型角色，只需指定相应的basePath和role
+下面示例中的basePath为[原项目](https://github.com/alg-wiki/AzurLaneL2DViewer)经jsdeliver的cdn加速后的模型资源路径，该basePath下可用的角色模型可到[原项目AzurLaneL2DViewer](<https://github.com/alg-wiki/AzurLaneL2DViewer/tree/gh-pages/assets>)查看。当然，你也可以从其他地方引入moc3类型的模型角色，只需指定相应的basePath和role参数
+
+**Tip：** 怎么判断是不是moc3的模型？ 查看模型文件内容，如图则是
+
+<img src="https://cdn.jsdelivr.net/gh/litstronger/pic@master/project/live2d-moc3/moc3.png" />
+
+
 
 ### 示例
 
