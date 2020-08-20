@@ -5,7 +5,12 @@ class Viewer {
         let width = config.width
         let height = config.height
         let role = config.role
-
+        let left = config.left //|| '0px'
+        let top = config.top //|| '0px'
+        let right = config.right //|| '0px'
+        let bottom = config.bottom //|| '0px'
+        let bg = config.background
+        let opa = config.opacity
         // this.l2d = new L2D(basePath);
         this.l2d = new L2D(config.basePath);
         this.canvas = $(".Canvas");
@@ -19,6 +24,21 @@ class Viewer {
             // antialias: true // 抗锯齿
         });
         this.canvas.html(this.app.view);
+        this.canvas[0].style.position = 'fixed'
+        if(bg){
+            this.canvas[0].style.background = `url("${bg}")`
+            this.canvas[0].style.backgroundSize = 'cover'
+        }
+        if(opa)
+            this.canvas[0].style.opacity = opa
+        if(top)
+            this.canvas[0].style.top = top
+        if(right)
+            this.canvas[0].style.right = right
+        if(bottom)
+            this.canvas[0].style.bottom = bottom
+        if(left)
+            this.canvas[0].style.left = left
 
         this.app.ticker.add((deltaTime) => {
             if (!this.model) {
@@ -38,12 +58,10 @@ class Viewer {
 
 
             if (this.model) {
-                console.log("point")
                 this.model.position = new PIXI.Point((width * 0.5), (height * 0.5));
                 this.model.scale = new PIXI.Point((this.model.position.x * 0.06), (this.model.position.x * 0.06));
                 this.model.masks.resize(this.app.view.width, this.app.view.height);
-                console.log(this.model.position)
-                console.log(this.model.scale)
+
             }
 
         };
@@ -86,12 +104,12 @@ class Viewer {
             this.isClick = false;
             this.model.inDrag = false;
         });
+        console.log("Init finished.")
     }
 
     changeCanvas (model) {
         this.app.stage.removeChildren();
 
-        // this.selectAnimation.empty();
         model.motions.forEach((value, key) => {
             if (key != "effect") {
                 let btn = document.createElement("button");
@@ -101,7 +119,6 @@ class Viewer {
                 btn.addEventListener("click", () => {
                     this.startAnimation(key, "base");
                 });
-                // this.selectAnimation.append(btn);
             }
         });
 
@@ -171,16 +188,16 @@ class Viewer {
         if (!this.model) {
             return;
         }
-        // console.log("start Animation:", motionId, layerId)
+        console.log("Animation:", motionId, layerId)
         let m = this.model.motions.get(motionId);
-        console.log("motionId:", m)
+        // console.log("motionId:", m)
         
         if (!m) {
             return;
         }
 
         let l = this.model.animator.getLayer(layerId);
-        console.log("layerId:", l)
+        // console.log("layerId:", l)
         if (!l) {
             return;
         }

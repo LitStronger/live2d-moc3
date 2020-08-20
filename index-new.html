@@ -23,36 +23,30 @@
 
     <!-- User's Script -->
     <script src = "js/backgroundData.js"></script>
-    <script src = "js/charData.js"></script>
+    <!-- <script src = "js/charData.js"></script> -->
     <script src = "js/l2d.js"></script>
-    <script src = "js/js-new/main-new.js"></script>
+    <script src = "js/main-new.js"></script>
 
     <style>
-        .wrap{
-            position: fixed;
-            /* left: 0px; 
-            bottom: 0px;
-            background-size: 100%; 
-            background: pink; */
-        }
     </style>
 </head>
 <body>
         <!-- Canvas -->
-        <!-- <div class="wrap"> -->
-            <div class="Canvas wrap"  id="L2dCanvas"></div>
-        <!-- </div> -->
+            <div class="Canvas"  id="L2dCanvas"></div>
         <script>
             var config = {
-                width: 800,
-                height: 600,
+                width: window.innerWidth,
+                height: window.innerHeight,
+                left: '0px',
+                bottom: '0px',
                 basePath: 'https://cdn.jsdelivr.net/gh/alg-wiki/AzurLaneL2DViewer@gh-pages/assets',
-                role: 'bisimai_2'
+                role: 'bisimai_2',
+                background: 'https://cdn.jsdelivr.net/gh/alg-wiki/AzurLaneL2DViewer@gh-pages/assets/bg/bg_church_jp.png',
+                opacity: 1
             }
-                // var v = new Viewer('assets');
-            var v = new Viewer(config);
 
-            console.log("ready init")
+            // var v = new Viewer('assets');
+            var v = new Viewer(config);
         </script>
 </body>
 </html>

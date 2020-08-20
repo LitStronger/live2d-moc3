@@ -17,7 +17,7 @@ class L2D {
     }
     
     load (name, v) {
-        console.log("loading", name, v)
+        console.log("loading:", name)
         if (!this.models[name]) {
             let modelDir = name+'/';
             let modelPath = name+'.model3.json';
@@ -111,7 +111,6 @@ class L2D {
                     let userData = null;
 
                     model = LIVE2DCUBISMPIXI.Model._create(coreModel, textures, animator, physicsRig, userData, groups);
-                    console.log("model load")
                     model.motions = motions;
                     this.models[name] = model;
 
