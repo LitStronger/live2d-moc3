@@ -3,48 +3,40 @@
 <html >
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>live2d-demo</title>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
-    <!-- Promise-polyfill -->
-    <script src = "https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js "> </script>
-    
     <!-- Live2DCubismCore -->
-    <script src="js/frame/live2dcubismcore.min.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/gh/litstronger/live2d-moc3@master/js/frame/live2dcubismcore.min.js"></script>
     <!-- Include Pixi. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.6.1/pixi.min.js"></script>
-
     <!-- Include Cubism Components. -->
-    <script src="js/live2dcubismframework.js"></script>
-    <script src="js/live2dcubismpixi.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/litstronger/live2d-moc3@master/js/live2dcubismframework.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/litstronger/live2d-moc3@master/js/live2dcubismpixi.js"></script>
 
     <!-- User's Script -->
-    <script src = "js/l2d.js"></script>
-    <script src = "js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/litstronger/live2d-moc3@master/js/l2d.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/litstronger/live2d-moc3@master/js/main.js"></script>
 
     <style>
     </style>
 </head>
 <body>
-        <!-- Canvas -->
-            <div class="Canvas"  id="L2dCanvas"></div>
-        <script>
-            var config = {
-                width: window.innerWidth,
-                height: window.innerHeight,
-                left: '0px',
-                bottom: '0px',
-                basePath: 'https://cdn.jsdelivr.net/gh/alg-wiki/AzurLaneL2DViewer@gh-pages/assets',
-                role: 'bisimai_2',
-                background: 'https://cdn.jsdelivr.net/gh/alg-wiki/AzurLaneL2DViewer@gh-pages/assets/bg/bg_church_jp.png',
-                opacity: 1
-            }
-
-            // var v = new Viewer('assets');
-            var v = new Viewer(config);
-        </script>
+    <!-- Canvas -->
+    <div class="Canvas"  id="L2dCanvas"></div>
+    <script>
+        var config = {
+            width: window.innerWidth,
+            height: window.innerHeight,
+            left: '0px',
+            bottom: '0px',
+            basePath: 'https://cdn.jsdelivr.net/gh/alg-wiki/AzurLaneL2DViewer@gh-pages/assets',
+            role: 'bisimai_2',
+            background: 'https://cdn.jsdelivr.net/gh/alg-wiki/AzurLaneL2DViewer@gh-pages/assets/bg/bg_church_jp.png',
+            opacity: 1
+        }
+        var v = new Viewer(config);
+    </script>
 </body>
 </html>

@@ -2,3 +2,4 @@ assets/
 js/js-old/
 node_modules/
 webpack.config.js
+test.html
