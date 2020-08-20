@@ -1,8 +1,7 @@
-// const L2D = require('./l2d.js')
 class Viewer {
     constructor (config) {
-        let width = config.width
-        let height = config.height
+        let width = config.width || 800
+        let height = config.height || 600
         let role = config.role
         let left = config.left //|| '0px'
         let top = config.top //|| '0px'
@@ -14,7 +13,6 @@ class Viewer {
         this.l2d = new L2D(config.basePath);
         this.canvas = $(".Canvas");
         this.l2d.load(role, this);      
-
 
         this.app = new PIXI.Application({
             width: width,
