@@ -1,5 +1,4 @@
-
-
+// const L2D = require('./l2d.js')
 class Viewer {
     constructor (config) {
         let width = config.width
@@ -250,3 +249,4 @@ class Viewer {
         return ((left <= tx) && (tx <= right) && (top <= ty) && (ty <= bottom));
     }
 }
+// module.exports = Viewer

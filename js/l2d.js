@@ -1,3 +1,7 @@
+// const PIXI = require('./l2d/pixi.min.js')
+// const LIVE2DCUBISMFRAMEWORK = require('./live2dcubismframework.js')
+
+// import PIXI from 
 class L2D {
     constructor (basePath) {
         this.basePath = basePath;
