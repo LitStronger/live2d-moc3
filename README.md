@@ -6,7 +6,14 @@
 **Demo**: 
 
 - 网页全屏示例：[litstronger.github.io/live2d-moc3/](https://litstronger.github.io/live2d-moc3/)
-- 博客看板示例：<https://litstronger.github.io/about/>
+
+- 博客看板示例：
+
+  - <https://litstronger.github.io/about/>
+
+  - <https://litstronger.github.io/show/>
+
+<a href="#more">示例截图</a>
 
 ### 可选参数
 
@@ -73,4 +80,22 @@
 </body>
 </html>
 ```
+
+### 示例截图
+
+<img src="https://cdn.jsdelivr.net/gh/litstronger/pic@master/project/live2d-moc3/demo1.webp" />
+
+<img src="https://cdn.jsdelivr.net/gh/litstronger/pic@master/project/live2d-moc3/demo3.webp" />
+
+<img src="https://cdn.jsdelivr.net/gh/litstronger/pic@master/project/live2d-moc3/demo2.webp" />
+
+<img src="https://cdn.jsdelivr.net/gh/litstronger/pic@master/project/live2d-moc3/demo4.webp" />
+
+<img src="https://cdn.jsdelivr.net/gh/litstronger/pic@master/project/live2d-moc3/demo5.webp" />
+
+<img src="https://cdn.jsdelivr.net/gh/litstronger/pic@master/project/live2d-moc3/demo6.webp" />
+
+
+
+**By the way, 如果你喜欢本项目，就点个珍贵的star吧！** 
 
