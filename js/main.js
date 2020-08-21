@@ -85,7 +85,7 @@ class Viewer {
             if (!this.model) {
                 return;
             }
-
+            this.isClick = true;
             if (this.isClick) {
                 if (this.isHit('TouchHead', event.offsetX, event.offsetY)) {
                     this.startAnimation("touch_head", "base");
