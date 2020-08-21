@@ -18,7 +18,7 @@ class Viewer {
             width: width,
             height: height, 
             transparent: true, 
-            // antialias: true // 抗锯齿
+            antialias: true // 抗锯齿
         });
         this.canvas.html(this.app.view);
         this.canvas[0].style.position = 'fixed'
@@ -52,8 +52,7 @@ class Viewer {
             this.app.view.style.width = width + "px";
             this.app.view.style.height = height + "px";
             this.app.renderer.resize(width, height);
-
-
+            
             if (this.model) {
                 this.model.position = new PIXI.Point((width * 0.5), (height * 0.5));
                 this.model.scale = new PIXI.Point((this.model.position.x * 0.06), (this.model.position.x * 0.06));

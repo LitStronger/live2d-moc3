@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <title>live2d-demo</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
     <!-- Live2DCubismCore -->
     <script src="https://cdn.jsdelivr.net/gh/litstronger/live2d-moc3@master/js/frame/live2dcubismcore.min.js"></script>
     <!-- Include Pixi. -->
@@ -13,11 +12,11 @@
     <!-- Include Cubism Components. -->
     <script src="https://cdn.jsdelivr.net/gh/litstronger/live2d-moc3@master/js/live2dcubismframework.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/litstronger/live2d-moc3@master/js/live2dcubismpixi.js"></script>
-
     <!-- User's Script -->
     <script src="https://cdn.jsdelivr.net/gh/litstronger/live2d-moc3@master/js/l2d.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/gh/litstronger/live2d-moc3@master/js/main.js"></script> -->
     <script src='./js/main.js'></script>
+
     <style>
     </style>
 </head>
@@ -26,8 +25,8 @@
     <div class="Canvas"  id="L2dCanvas"></div>
     <script>
         var config = {
-            width: 800,
-            height: 600,
+            width: window.innerWidth,
+            height: window.innerHeight,
             left: '0px',
             bottom: '0px',
             basePath: 'https://cdn.jsdelivr.net/gh/alg-wiki/AzurLaneL2DViewer@gh-pages/assets',
@@ -35,7 +34,9 @@
             background: 'https://cdn.jsdelivr.net/gh/alg-wiki/AzurLaneL2DViewer@gh-pages/assets/bg/bg_church_jp.png',
             opacity: 1
         }
-        var v = new Viewer(config);
+        window.onload = function(){
+            var v = new Viewer(config);
+        }    
     </script>
 </body>
 </html>
