@@ -9,11 +9,14 @@ class Viewer {
         let bottom = config.bottom //|| '0px'
         let bg = config.background
         let opa = config.opacity
-        // this.l2d = new L2D(basePath);
+        let mobile = config.mobile
+
+        if(!mobile){
+            if(this.isMobile()) return;
+        } 
         this.l2d = new L2D(config.basePath);
         this.canvas = $(".Canvas");
         this.l2d.load(role, this);      
-
         this.app = new PIXI.Application({
             width: width,
             height: height, 
@@ -245,5 +248,32 @@ class Viewer {
 
         return ((left <= tx) && (tx <= right) && (top <= ty) && (ty <= bottom));
     }
+
+    isMobile(){
+        var WIN = window;
+        var LOC = WIN["location"];
+        var NA = WIN.navigator;
+        var UA = NA.userAgent.toLowerCase();
+
+        function test(needle) {
+          return needle.test(UA);
+        }        
+        var IsAndroid = test(/android|htc/) || /linux/i.test(NA.platform + "");
+        var IsIPhone = !IsAndroid && test(/ipod|iphone/);
+        var IsWinPhone = test(/windows phone/);
+
+        var device = {
+            IsAndroid: IsAndroid,
+            IsIPhone: IsIPhone,
+            IsWinPhone: IsWinPhone
+        }
+        var documentElement = WIN.document.documentElement;
+        for (var i in device) {
+            if (device[i]) {
+                documentElement.className += " " + i.replace("Is", "").toLowerCase();
+            }
+        }
+        return device.IsAndroid || device.IsIPhone || device.IsWinPhone
+    }
+
 }
-// module.exports = Viewer
