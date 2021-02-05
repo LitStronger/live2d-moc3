@@ -7,7 +7,7 @@
 -  8.22 添加移动端(手机)是否显示的选项
 
 ### Demo
--  网页全屏示例：[litstronger.github.io/live2d-moc3/](https://litstronger.github.io/live2d-moc3/)
+-  网页全屏示例：[litstronger.github.io/show/](https://litstronger.github.io/show/)
 -  博客看板示例：
 
   - <https://litstronger.github.io/about/>
